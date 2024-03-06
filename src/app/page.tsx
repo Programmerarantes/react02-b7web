@@ -3,17 +3,19 @@
 import { useState } from "react"
 
 const Page = () => {
-  const [showSecret, setShowSecret] = useState(false)
 
-  const handleClickButton = () => {
-    setShowSecret(!showSecret)
-  }
+  const [nameInput, setNameInput] = useState('')
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
-      <button onClick={handleClickButton} className="bg-blue-500 p-3 rounded-md">{showSecret ? 'Ocultar' : 'Mostrar'}</button>
-      {showSecret && <div className="p-3 bg-blue-300 rounded-md mt-3">Área Secreta</div>}
-      
+      <input 
+        type="text" 
+        className="border-black p-3 text-xl text-black rounded-md"
+        placeholder="Digite seu nome"
+        value={nameInput}
+        onChange={e => setNameInput(e.target.value)}
+      />
+      <p>Seu nome é: {nameInput}</p>  
     </div>
   )
 }
